@@ -12,8 +12,9 @@ def get_published_posts(category=None):
     )
     if category:
         queryset = queryset.filter(
-            category=category, category__is_published=True
-            )
+            category=category, 
+            category__is_published=True
+        )    
     return queryset.order_by('-pub_date')
 
 
