@@ -12,6 +12,7 @@ def get_published_posts():
         category__is_published=True
     ).order_by('-pub_date')
 
+
 def index(request):
     posts = get_published_posts()[:5]  # Получаем только первые 5 постов
     return render(request, 'blog/index.html', {'post_list': posts})
