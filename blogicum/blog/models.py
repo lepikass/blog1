@@ -26,7 +26,7 @@ class Category(models.Model):
         verbose_name_plural = 'Категории'
 
     def __str__(self):
-        return self.title[:30] + '...' if len(self.title) > 30 else self.title
+        return self.title
 
 
 class Location(models.Model):
@@ -42,7 +42,7 @@ class Location(models.Model):
         verbose_name_plural = 'Местоположения'
 
     def __str__(self):
-        return self.name
+        return self.name[:30] + '...' if len(self.name) > 30 else self.name
 
 
 class Post(models.Model):
