@@ -11,12 +11,16 @@ def get_published_posts(category=None):
         is_published=True
     )
     if category:
-        queryset = queryset.filter(category=category, category__is_published=True)
+        queryset = queryset.filter(
+            category=category, category__is_published=True
+            )
     return queryset.order_by('-pub_date')
+
 
 def index(request):
     posts = get_published_posts()[:5]
     return render(request, 'blog/index.html', {'post_list': posts})
+
 
 def category_posts(request, slug):
     category = get_object_or_404(Category, slug=slug, is_published=True)
@@ -28,6 +32,7 @@ def category_posts(request, slug):
             'post_list': post_list
         }
     )
+
 
 def post_detail(request, pk):
     post = get_object_or_404(
